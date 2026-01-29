@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Elskuld Laddning</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section id="profile-picker" class="card">
+        <h1>Välj profil</h1>
+        <div class="profile-grid">
+          <button class="profile-button" data-profile="me">
+            <img src="assets/id4.svg" alt="VW ID.4 spacegrey" />
+            <div>
+              <strong>Jag</strong>
+              <span>VW ID.4 spacegrey</span>
+            </div>
+          </button>
+          <button class="profile-button" data-profile="neighbor">
+            <img src="assets/niro.svg" alt="Kia Niro EV limegrön" />
+            <div>
+              <strong>Granne</strong>
+              <span>Kia Niro EV limegrön</span>
+            </div>
+          </button>
+        </div>
+      </section>
+
+      <section id="profile-view" class="card hidden">
+        <div class="header-row">
+          <button id="back-button" class="link-button">← Byt profil</button>
+          <div class="meta">
+            <span id="updated-at"></span>
+          </div>
+        </div>
+        <div class="profile-header">
+          <img id="profile-image" src="" alt="" />
+          <div>
+            <h2 id="profile-label"></h2>
+            <p id="profile-vehicle"></p>
+          </div>
+        </div>
+
+        <div class="filters">
+          <label>
+            Från
+            <select id="start-month"></select>
+          </label>
+          <label>
+            Till
+            <select id="end-month"></select>
+          </label>
+        </div>
+
+        <div class="summary">
+          <h3>Summa skuld för vald period</h3>
+          <div id="total-sum" class="total"></div>
+        </div>
+
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Månad</th>
+                <th>kWh</th>
+                <th>Spotpris (öre)</th>
+                <th>Elhandel (kr)</th>
+                <th>Elnät (kr)</th>
+                <th>Total (kr)</th>
+                <th>Varning</th>
+              </tr>
+            </thead>
+            <tbody id="month-rows"></tbody>
+          </table>
+        </div>
+
+        <details class="rates">
+          <summary>Visa använda tariffer</summary>
+          <div id="rates-table"></div>
+        </details>
+      </section>
+    </main>
+
+    <script src="app.js" type="module"></script>
+  </body>
+</html>
