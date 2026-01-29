@@ -1,0 +1,11 @@
+{
+  "name": "the-charging-rally",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "update-ledger": "node scripts/update-ledger.mjs"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.12"
+  }
+}
