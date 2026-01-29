@@ -1,0 +1,35 @@
+{
+  "meta": {
+    "schemaVersion": "1.0",
+    "updatedAtUtc": "2024-01-01T00:00:00Z",
+    "lastRunStatus": "OK",
+    "lastError": null
+  },
+  "identities": {
+    "siteId": 64085,
+    "meUserId": 540804,
+    "neighborUserId": 1212490
+  },
+  "rates": [
+    {
+      "from": "2024-01",
+      "localDiscountOreInclVat": 3.75,
+      "gridTransferOreInclVat": 7.5,
+      "energyTaxOreInclVat": 54.88,
+      "norrlandDeductionOreInclVat": -12.0
+    }
+  ],
+  "profiles": {
+    "me": {
+      "label": "Jag",
+      "vehicle": "VW ID.4 spacegrey",
+      "image": "assets/id4.svg"
+    },
+    "neighbor": {
+      "label": "Granne",
+      "vehicle": "Kia Niro EV limegron",
+      "image": "assets/niro.svg"
+    }
+  },
+  "months": []
+}
