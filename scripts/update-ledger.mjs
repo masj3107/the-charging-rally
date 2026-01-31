@@ -10,7 +10,7 @@ const dataPath = path.join(repoRoot, "data", "ledger.json");
 const docsDataPath = path.join(repoRoot, "docs", "data", "ledger.json");
 
 const JAMTKRAFT_URL =
-  "https://www.jamtkraft.se/privat/elavtal/elpriser/prishistorik-rorligt-elpris";
+  "https://www.jamtkraft.se/privat/elavtal/vara-elavtal/rorligt-elpris/prishistorik-rorlig-elpris/";
 
 const toMonthKey = (year, month) => `${year}-${String(month).padStart(2, "0")}`;
 
@@ -152,6 +152,24 @@ const fetchEaseeMonthlyUsage = async (siteId, userId, token) => {
   return usage;
 };
 
+const loginEasee = async (userName, password) => {
+  const response = await fetch("https://api.easee.com/api/accounts/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ userName, password }),
+  });
+  if (!response.ok) {
+    throw new Error(`Easee login failed with ${response.status}`);
+  }
+  const data = await response.json();
+  if (!data?.accessToken) {
+    throw new Error("Easee login response missing accessToken");
+  }
+  return data.accessToken;
+};
+
 const calculateMonth = ({
   monthKey,
   spotOreInclVat,
@@ -226,7 +244,9 @@ const calculateMonth = ({
 const main = async () => {
   const ledgerRaw = await fs.readFile(dataPath, "utf8");
   const ledger = JSON.parse(ledgerRaw);
-  const token = process.env.EASEE_TOKEN;
+  const tokenFromEnv = process.env.EASEE_TOKEN;
+  const easeeUserName = process.env.EASEE_USERNAME;
+  const easeePassword = process.env.EASEE_PASSWORD;
   const lastClosed = getLastClosedMonth();
   const startKey = "2024-01";
   const endKey = toMonthKey(lastClosed.year, lastClosed.month);
@@ -240,8 +260,14 @@ const main = async () => {
 
   try {
     jamtkraftData = await parseJamtkraft();
+    let token = tokenFromEnv;
     if (!token) {
-      throw new Error("Missing EASEE_TOKEN");
+      if (!easeeUserName || !easeePassword) {
+        throw new Error(
+          "Missing Easee credentials. Set EASEE_TOKEN or EASEE_USERNAME/EASEE_PASSWORD."
+        );
+      }
+      token = await loginEasee(easeeUserName, easeePassword);
     }
     meUsage = await fetchEaseeMonthlyUsage(
       ledger.identities.siteId,
