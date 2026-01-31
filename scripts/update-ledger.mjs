@@ -258,45 +258,47 @@ const main = async () => {
     lastError = error instanceof Error ? error.message : String(error);
   }
 
-  const monthMap = new Map(
-    (ledger.months || []).map((monthEntry) => [
-      toMonthKey(monthEntry.year, monthEntry.month),
-      monthEntry,
-    ])
-  );
+  if (lastRunStatus === "OK") {
+    const monthMap = new Map(
+      (ledger.months || []).map((monthEntry) => [
+        toMonthKey(monthEntry.year, monthEntry.month),
+        monthEntry,
+      ])
+    );
 
-  const updatedMonths = [];
+    const updatedMonths = [];
 
-  for (const { year, month } of monthList) {
-    const monthKey = toMonthKey(year, month);
-    const existing = monthMap.get(monthKey);
-    if (existing?.isLocked) {
-      updatedMonths.push(existing);
-      continue;
+    for (const { year, month } of monthList) {
+      const monthKey = toMonthKey(year, month);
+      const existing = monthMap.get(monthKey);
+      if (existing?.isLocked) {
+        updatedMonths.push(existing);
+        continue;
+      }
+
+      const spotOreInclVat = jamtkraftData?.[year]?.[month] ?? null;
+      const meKWh = meUsage.get(monthKey) ?? null;
+      const neighborKWh = neighborUsage.get(monthKey) ?? null;
+      const selectedRates = selectRates(ledger.rates, monthKey);
+
+      const calculated = calculateMonth({
+        monthKey,
+        spotOreInclVat,
+        meKWh,
+        neighborKWh,
+        rates: selectedRates,
+      });
+
+      updatedMonths.push({
+        year,
+        month,
+        isLocked: existing?.isLocked ?? false,
+        ...calculated,
+      });
     }
 
-    const spotOreInclVat = jamtkraftData?.[year]?.[month] ?? null;
-    const meKWh = meUsage.get(monthKey) ?? null;
-    const neighborKWh = neighborUsage.get(monthKey) ?? null;
-    const selectedRates = selectRates(ledger.rates, monthKey);
-
-    const calculated = calculateMonth({
-      monthKey,
-      spotOreInclVat,
-      meKWh,
-      neighborKWh,
-      rates: selectedRates,
-    });
-
-    updatedMonths.push({
-      year,
-      month,
-      isLocked: existing?.isLocked ?? false,
-      ...calculated,
-    });
+    ledger.months = updatedMonths;
   }
-
-  ledger.months = updatedMonths;
   ledger.meta.updatedAtUtc = new Date().toISOString();
   ledger.meta.lastRunStatus = lastRunStatus;
   ledger.meta.lastError = lastError;

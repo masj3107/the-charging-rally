@@ -1,24 +1,36 @@
 <!doctype html>
-<html lang="sv">
+<html lang="sv" ng-app="chargingRally">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Elskuld Laddning</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
-    <main class="app">
-      <section id="profile-picker" class="card">
+  <body ng-controller="MainController as vm">
+    <main class="app" ng-cloak>
+      <section class="card" ng-if="!vm.state.ledger">
+        <h1>Laddar data…</h1>
+        <p>Hämtar senaste ledger från GitHub Pages.</p>
+      </section>
+      <section
+        id="profile-picker"
+        class="card"
+        ng-if="vm.state.ledger && !vm.state.profile"
+      >
         <h1>Välj profil</h1>
         <div class="profile-grid">
-          <button class="profile-button" data-profile="me">
+          <button class="profile-button" type="button" ng-click="vm.selectProfile('me')">
             <img src="assets/id4.svg" alt="VW ID.4 spacegrey" />
             <div>
               <strong>Jag</strong>
               <span>VW ID.4 spacegrey</span>
             </div>
           </button>
-          <button class="profile-button" data-profile="neighbor">
+          <button
+            class="profile-button"
+            type="button"
+            ng-click="vm.selectProfile('neighbor')"
+          >
             <img src="assets/niro.svg" alt="Kia Niro EV limegrön" />
             <div>
               <strong>Granne</strong>
@@ -28,35 +40,51 @@
         </div>
       </section>
 
-      <section id="profile-view" class="card hidden">
+      <section
+        id="profile-view"
+        class="card"
+        ng-if="vm.state.ledger && vm.state.profile"
+      >
         <div class="header-row">
-          <button id="back-button" class="link-button">← Byt profil</button>
+          <button class="link-button" type="button" ng-click="vm.resetProfile()">
+            ← Byt profil
+          </button>
           <div class="meta">
-            <span id="updated-at"></span>
+            <span>Senast uppdaterad: {{ vm.state.ledger.meta.updatedAtUtc }}</span>
           </div>
         </div>
         <div class="profile-header">
-          <img id="profile-image" src="" alt="" />
+          <img
+            id="profile-image"
+            ng-src="{{ vm.state.profile.image }}"
+            alt="{{ vm.state.profile.vehicle }}"
+          />
           <div>
-            <h2 id="profile-label"></h2>
-            <p id="profile-vehicle"></p>
+            <h2>{{ vm.state.profile.label }}</h2>
+            <p>{{ vm.state.profile.vehicle }}</p>
           </div>
         </div>
 
         <div class="filters">
           <label>
             Från
-            <select id="start-month"></select>
+            <select
+              ng-model="vm.state.selectedStart"
+              ng-options="month for month in vm.state.monthOptions"
+            ></select>
           </label>
           <label>
             Till
-            <select id="end-month"></select>
+            <select
+              ng-model="vm.state.selectedEnd"
+              ng-options="month for month in vm.state.monthOptions"
+            ></select>
           </label>
         </div>
 
         <div class="summary">
           <h3>Summa skuld för vald period</h3>
-          <div id="total-sum" class="total"></div>
+          <div class="total">{{ vm.formatCurrency(vm.state.totalSum) }}</div>
         </div>
 
         <div class="table-wrapper">
@@ -72,17 +100,51 @@
                 <th>Varning</th>
               </tr>
             </thead>
-            <tbody id="month-rows"></tbody>
+            <tbody>
+              <tr ng-repeat="entry in vm.state.filteredMonths track by entry.key">
+                <td>{{ entry.key }}</td>
+                <td>{{ entry.kwhDisplay }}</td>
+                <td>{{ entry.spotDisplay }}</td>
+                <td>{{ vm.formatCurrency(entry.result.elhandelKr) }}</td>
+                <td>{{ vm.formatCurrency(entry.result.elnatKr) }}</td>
+                <td>{{ vm.formatCurrency(entry.result.totalKr) }}</td>
+                <td class="warning" title="{{ entry.warningTitle }}">
+                  {{ entry.warningIcon }}
+                </td>
+              </tr>
+            </tbody>
           </table>
         </div>
 
         <details class="rates">
           <summary>Visa använda tariffer</summary>
-          <div id="rates-table"></div>
+          <div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Gäller från</th>
+                  <th>Lokal rabatt (öre)</th>
+                  <th>Nätöverföring (öre)</th>
+                  <th>Energiskatt (öre)</th>
+                  <th>Norrlandsavdrag (öre)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="rate in vm.state.ledger.rates track by rate.from">
+                  <td>{{ rate.from }}</td>
+                  <td>{{ rate.localDiscountOreInclVat }}</td>
+                  <td>{{ rate.gridTransferOreInclVat }}</td>
+                  <td>{{ rate.energyTaxOreInclVat }}</td>
+                  <td>{{ rate.norrlandDeductionOreInclVat }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </details>
       </section>
     </main>
 
-    <script src="app.js" type="module"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
+    <script src="app.js"></script>
   </body>
 </html>
