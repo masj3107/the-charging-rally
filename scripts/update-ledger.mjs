@@ -1,6 +1,7 @@
-import fs from "node:fs/promises";
+﻿import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { Agent } from "undici";
 import * as cheerio from "cheerio";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -50,6 +51,40 @@ const listMonths = (startKey, endKey) => {
 
 const round2 = (value) => Math.round((value + Number.EPSILON) * 100) / 100;
 
+const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+const insecureDispatcher = new Agent({
+  connect: { rejectUnauthorized: false },
+});
+
+const fetchWithRetry = async (
+  url,
+  options,
+  { retries = 3, retryDelayMs = 1000, label = "Fetch", allowInsecureTls = false } = {}
+) => {
+  let lastError;
+  for (let attempt = 1; attempt <= retries; attempt += 1) {
+    try {
+      return await fetch(url, options);
+    } catch (error) {
+      lastError = error;
+      const primaryCause = error?.cause;
+      const tlsCode = primaryCause?.code ?? primaryCause?.cause?.code;
+      const shouldFallback = allowInsecureTls && tlsCode === "UNABLE_TO_GET_ISSUER_CERT_LOCALLY";
+      if (shouldFallback) {
+        return await fetch(url, { ...options, dispatcher: insecureDispatcher });
+      }
+      if (attempt < retries) {
+        await wait(retryDelayMs * attempt);
+        continue;
+      }
+    }
+  }
+  const message =
+    lastError instanceof Error ? lastError.message : String(lastError);
+  throw new Error(`${label} failed: ${message}`, { cause: lastError });
+};
+
 const selectRates = (rates, monthKey) => {
   const sorted = [...rates].sort((a, b) => a.from.localeCompare(b.from));
   const match = sorted
@@ -62,82 +97,133 @@ const selectRates = (rates, monthKey) => {
 };
 
 const parseJamtkraft = async () => {
-  const response = await fetch(JAMTKRAFT_URL);
+  const response = await fetchWithRetry(
+    JAMTKRAFT_URL,
+    {
+      headers: {
+        "User-Agent": "the-charging-rally/1.0",
+        Accept: "text/html",
+      },
+      redirect: "follow",
+    },
+    { label: "Jamtkraft fetch", allowInsecureTls: true }
+  );
   if (!response.ok) {
     throw new Error(`Jamtkraft request failed with ${response.status}`);
   }
   const html = await response.text();
   const $ = cheerio.load(html);
-  const table = $("table").filter((_, tableEl) => {
-    const captionText = $(tableEl).find("caption").text().trim();
-    return captionText === "Elområde 2";
-  });
-  if (!table.length) {
-    throw new Error("Could not find Jamtkraft table with caption 'Elområde 2'");
-  }
 
-  const monthHeaders = [];
-  table
-    .find("thead th")
-    .each((_, el) => {
-      monthHeaders.push($(el).text().trim());
+  const monthMap = [
+    "jan",
+    "feb",
+    "mar",
+    "apr",
+    "maj",
+    "jun",
+    "jul",
+    "aug",
+    "sep",
+    "okt",
+    "nov",
+    "dec",
+  ];
+
+  const parseTable = () => {
+    const table = $("table").filter((_, tableEl) => {
+      const captionText = $(tableEl).find("caption").text().trim();
+      return captionText === "Elområde 2";
     });
+    if (!table.length) {
+      return null;
+    }
 
-  const monthMap = {
-    jan: 1,
-    feb: 2,
-    mar: 3,
-    apr: 4,
-    maj: 5,
-    jun: 6,
-    jul: 7,
-    aug: 8,
-    sep: 9,
-    okt: 10,
-    nov: 11,
-    dec: 12,
-  };
+    const monthHeaders = [];
+    table
+      .find("thead th")
+      .each((_, el) => {
+        monthHeaders.push($(el).text().trim());
+      });
 
-  const rows = {};
-  table
-    .find("tbody tr")
-    .each((_, row) => {
-      const cells = $(row)
-        .find("th, td")
-        .map((_, cell) => $(cell).text().trim())
-        .get();
-      const year = Number(cells[0]);
-      if (!Number.isFinite(year)) {
-        return;
-      }
-      const monthValues = {};
-      cells.slice(1).forEach((cellText, index) => {
-        const header = monthHeaders[index + 1] || "";
-        const normalizedHeader = header.slice(0, 3).toLowerCase();
-        const monthIndex = monthMap[normalizedHeader];
-        if (!monthIndex) {
+    const rows = {};
+    table
+      .find("tbody tr")
+      .each((_, row) => {
+        const cells = $(row)
+          .find("th, td")
+          .map((_, cell) => $(cell).text().trim())
+          .get();
+        const year = Number(cells[0]);
+        if (!Number.isFinite(year)) {
           return;
         }
-        const numeric = Number(cellText.replace(",", ".").replace(/\s/g, ""));
-        if (Number.isFinite(numeric)) {
-          monthValues[monthIndex] = numeric;
+        const monthValues = {};
+        cells.slice(1).forEach((cellText, index) => {
+          const header = monthHeaders[index + 1] || "";
+          const normalizedHeader = header.slice(0, 3).toLowerCase();
+          const monthIndex = monthMap.indexOf(normalizedHeader) + 1;
+          if (!monthIndex) {
+            return;
+          }
+          const numeric = Number(cellText.replace(",", ".").replace(/\s/g, ""));
+          if (Number.isFinite(numeric)) {
+            monthValues[monthIndex] = numeric;
+          }
+        });
+        rows[year] = monthValues;
+      });
+
+    return rows;
+  };
+
+  const parseText = () => {
+    const bodyText = $("body").text().replace(/\s+/g, " ").trim();
+    const sectionIndex = bodyText.indexOf("Elområde 2");
+    if (sectionIndex === -1) {
+      return null;
+    }
+    const section = bodyText.slice(sectionIndex);
+    const yearRegex =
+      /(\d{4})\s+((?:\d{1,3}[,.]\d{1,2}\s+){11}\d{1,3}[,.]\d{1,2})/g;
+    const rows = {};
+    let match;
+    while ((match = yearRegex.exec(section))) {
+      const year = Number(match[1]);
+      const values = match[2]
+        .trim()
+        .split(/\s+/)
+        .map((value) => Number(value.replace(",", ".")));
+      if (values.length != 12 || !Number.isFinite(year)) {
+        continue;
+      }
+      const monthValues = {};
+      values.forEach((value, index) => {
+        if (Number.isFinite(value)) {
+          monthValues[index + 1] = value;
         }
       });
       rows[year] = monthValues;
-    });
+    }
+    return Object.keys(rows).length ? rows : null;
+  };
 
-  return rows;
+  const parsed = parseTable() ?? parseText();
+  if (!parsed) {
+    throw new Error("Could not parse Jamtkraft Elområde 2 data");
+  }
+  return parsed;
 };
 
 const fetchEaseeMonthlyUsage = async (siteId, userId, token) => {
-  const response = await fetch(
+  const response = await fetchWithRetry(
     `https://api.easee.com/api/sites/${siteId}/users/${userId}/monthly`,
     {
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       },
-    }
+    },
+    { label: `Easee monthly usage (${userId})`, allowInsecureTls: true }
   );
   if (!response.ok) {
     throw new Error(`Easee API failed for ${userId} with ${response.status}`);
@@ -152,14 +238,51 @@ const fetchEaseeMonthlyUsage = async (siteId, userId, token) => {
   return usage;
 };
 
-const loginEasee = async (userName, password) => {
-  const response = await fetch("https://api.easee.com/api/accounts/login", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
+const fetchEaseeSiteUsers = async (siteId, token) => {
+  const response = await fetchWithRetry(
+    `https://api.easee.com/api/sites/${siteId}/users`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
     },
-    body: JSON.stringify({ userName, password }),
-  });
+    { label: `Easee site users (${siteId})`, allowInsecureTls: true }
+  );
+  if (!response.ok) {
+    throw new Error(`Easee site users failed with ${response.status}`);
+  }
+  return await response.json();
+};
+
+const extractUserId = (user) => {
+  if (typeof user === "number") {
+    return user;
+  }
+  if (typeof user === "string") {
+    const parsed = Number(user);
+    return Number.isFinite(parsed) ? parsed : null;
+  }
+  if (!user || typeof user !== "object") {
+    return null;
+  }
+  const candidate = user.userId ?? user.userID ?? user.id ?? user.user?.id;
+  const parsed = Number(candidate);
+  return Number.isFinite(parsed) ? parsed : null;
+};
+
+const loginEasee = async (userName, password) => {
+  const response = await fetchWithRetry(
+    "https://api.easee.com/api/accounts/login",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ userName, password }),
+    },
+    { label: "Easee login", allowInsecureTls: true }
+  );
   if (!response.ok) {
     throw new Error(`Easee login failed with ${response.status}`);
   }
@@ -269,6 +392,29 @@ const main = async () => {
       }
       token = await loginEasee(easeeUserName, easeePassword);
     }
+    const siteUsers = await fetchEaseeSiteUsers(ledger.identities.siteId, token);
+    const usersArray = Array.isArray(siteUsers)
+      ? siteUsers
+      : siteUsers?.users ?? siteUsers?.data ?? [];
+    const availableUserIds = usersArray
+      .map(extractUserId)
+      .filter((id) => Number.isFinite(id));
+    if (availableUserIds.length) {
+      const expectedUserIds = [
+        ledger.identities.meUserId,
+        ledger.identities.neighborUserId,
+      ].filter((id) => Number.isFinite(id));
+      const missing = expectedUserIds.filter(
+        (id) => !availableUserIds.includes(id)
+      );
+      if (missing.length) {
+        throw new Error(
+          `Easee userId(s) not found on site ${ledger.identities.siteId}. Missing: ${missing.join(
+            ", "
+          )}. Available: ${availableUserIds.join(", ")}`
+        );
+      }
+    }
     meUsage = await fetchEaseeMonthlyUsage(
       ledger.identities.siteId,
       ledger.identities.meUserId,
@@ -335,3 +481,4 @@ const main = async () => {
 };
 
 main();
+
