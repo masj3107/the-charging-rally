@@ -1,9 +1,9 @@
 {
   "meta": {
     "schemaVersion": "1.0",
-    "updatedAtUtc": "2024-01-01T00:00:00Z",
-    "lastRunStatus": "OK",
-    "lastError": null
+    "updatedAtUtc": "2026-01-31T22:34:10.585Z",
+    "lastRunStatus": "FAIL",
+    "lastError": "Jamtkraft request failed with 404"
   },
   "identities": {
     "siteId": 64085,
@@ -16,7 +16,7 @@
       "localDiscountOreInclVat": 3.75,
       "gridTransferOreInclVat": 7.5,
       "energyTaxOreInclVat": 54.88,
-      "norrlandDeductionOreInclVat": -12.0
+      "norrlandDeductionOreInclVat": -12
     }
   ],
   "profiles": {
