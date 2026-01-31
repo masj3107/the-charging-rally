@@ -1,157 +1,116 @@
-const state = {
-  ledger: null,
-  profile: null,
-};
+(() => {
+  const app = angular.module("chargingRally", []);
 
-const profilePicker = document.getElementById("profile-picker");
-const profileView = document.getElementById("profile-view");
-const profileImage = document.getElementById("profile-image");
-const profileLabel = document.getElementById("profile-label");
-const profileVehicle = document.getElementById("profile-vehicle");
-const updatedAt = document.getElementById("updated-at");
-const startMonthSelect = document.getElementById("start-month");
-const endMonthSelect = document.getElementById("end-month");
-const totalSum = document.getElementById("total-sum");
-const monthRows = document.getElementById("month-rows");
-const ratesTable = document.getElementById("rates-table");
-const backButton = document.getElementById("back-button");
+  app.controller("MainController", ["$http", "$scope", function ($http, $scope) {
+    const vm = this;
 
-const loadLedger = async () => {
-  const response = await fetch("./data/ledger.json", { cache: "no-store" });
-  if (!response.ok) {
-    throw new Error("Kunde inte läsa JSON");
-  }
-  return response.json();
-};
+    vm.state = {
+      ledger: null,
+      profileKey: null,
+      profile: null,
+      monthOptions: [],
+      selectedStart: null,
+      selectedEnd: null,
+      filteredMonths: [],
+      totalSum: 0,
+    };
 
-const formatMonth = (year, month) => {
-  return `${year}-${String(month).padStart(2, "0")}`;
-};
+    vm.formatCurrency = (value) => {
+      if (value == null) {
+        return "-";
+      }
+      return `${value.toFixed(2).replace(".", ",")} kr`;
+    };
 
-const formatCurrency = (value) =>
-  `${value.toFixed(2).replace(".", ",")} kr`;
+    vm.formatMonth = (year, month) =>
+      `${year}-${String(month).padStart(2, "0")}`;
 
-const buildOptions = (months) => {
-  return months
-    .map((entry) => {
-      const label = `${entry.year}-${String(entry.month).padStart(2, "0")}`;
-      return `<option value="${label}">${label}</option>`;
-    })
-    .join("");
-};
+    vm.selectProfile = (profileKey) => {
+      vm.state.profileKey = profileKey;
+      vm.state.profile = vm.state.ledger.profiles[profileKey];
+      vm.resetFilters();
+    };
 
-const updateSummary = () => {
-  if (!state.ledger || !state.profile) {
-    return;
-  }
-  const months = state.ledger.months;
-  const startValue = startMonthSelect.value;
-  const endValue = endMonthSelect.value;
+    vm.resetProfile = () => {
+      vm.state.profileKey = null;
+      vm.state.profile = null;
+      vm.state.filteredMonths = [];
+      vm.state.totalSum = 0;
+    };
 
-  const filtered = months.filter((entry) => {
-    const key = formatMonth(entry.year, entry.month);
-    return key >= startValue && key <= endValue;
-  });
+    vm.resetFilters = () => {
+      const months = vm.state.ledger.months || [];
+      vm.state.monthOptions = months.map((entry) =>
+        vm.formatMonth(entry.year, entry.month)
+      );
+      vm.state.selectedStart = vm.state.monthOptions[0] || null;
+      vm.state.selectedEnd =
+        vm.state.monthOptions[vm.state.monthOptions.length - 1] || null;
+      vm.updateSummary();
+    };
 
-  let sum = 0;
-  monthRows.innerHTML = "";
+    vm.updateSummary = () => {
+      if (!vm.state.profileKey || !vm.state.ledger) {
+        return;
+      }
 
-  filtered.forEach((entry) => {
-    const result = entry.result[state.profile];
-    const warnings = entry.warnings || [];
-    const warningIcon = warnings.length ? "⚠️" : "";
-    const warningTitle = warnings.join(", ");
-    sum += result.totalKr;
-    const row = document.createElement("tr");
-    row.innerHTML = `
-      <td>${formatMonth(entry.year, entry.month)}</td>
-      <td>${entry.inputs[state.profile === "me" ? "meKWh" : "neighborKWh"] ?? "-"}</td>
-      <td>${entry.inputs.spotOreInclVat ?? "-"}</td>
-      <td>${formatCurrency(result.elhandelKr)}</td>
-      <td>${formatCurrency(result.elnatKr)}</td>
-      <td>${formatCurrency(result.totalKr)}</td>
-      <td class="warning" title="${warningTitle}">${warningIcon}</td>
-    `;
-    monthRows.appendChild(row);
-  });
+      const startValue = vm.state.selectedStart;
+      const endValue = vm.state.selectedEnd;
+      const filtered = (vm.state.ledger.months || []).filter((entry) => {
+        const key = vm.formatMonth(entry.year, entry.month);
+        return key >= startValue && key <= endValue;
+      });
 
-  totalSum.textContent = formatCurrency(sum);
-};
+      let sum = 0;
+      vm.state.filteredMonths = filtered.map((entry) => {
+        const key = vm.formatMonth(entry.year, entry.month);
+        const result = entry.result[vm.state.profileKey];
+        const warnings = entry.warnings || [];
+        const warningTitle = warnings.join(", ");
+        const warningIcon = warnings.length ? "⚠️" : "";
+        const kwhKey =
+          vm.state.profileKey === "me" ? "meKWh" : "neighborKWh";
 
-const renderRates = () => {
-  if (!state.ledger) {
-    return;
-  }
-  const rows = state.ledger.rates
-    .map(
-      (rate) => `
-      <tr>
-        <td>${rate.from}</td>
-        <td>${rate.localDiscountOreInclVat}</td>
-        <td>${rate.gridTransferOreInclVat}</td>
-        <td>${rate.energyTaxOreInclVat}</td>
-        <td>${rate.norrlandDeductionOreInclVat}</td>
-      </tr>
-    `
-    )
-    .join("");
-  ratesTable.innerHTML = `
-    <table>
-      <thead>
-        <tr>
-          <th>Gäller från</th>
-          <th>Lokal rabatt (öre)</th>
-          <th>Nätöverföring (öre)</th>
-          <th>Energiskatt (öre)</th>
-          <th>Norrlandsavdrag (öre)</th>
-        </tr>
-      </thead>
-      <tbody>
-        ${rows}
-      </tbody>
-    </table>
-  `;
-};
+        sum += result.totalKr;
 
-const selectProfile = (profileKey) => {
-  state.profile = profileKey;
-  const profile = state.ledger.profiles[profileKey];
-  profileImage.src = profile.image;
-  profileImage.alt = profile.vehicle;
-  profileLabel.textContent = profile.label;
-  profileVehicle.textContent = profile.vehicle;
-  updatedAt.textContent = `Senast uppdaterad: ${state.ledger.meta.updatedAtUtc}`;
+        return {
+          key,
+          result,
+          warningIcon,
+          warningTitle,
+          kwhDisplay: entry.inputs[kwhKey] ?? "-",
+          spotDisplay: entry.inputs.spotOreInclVat ?? "-",
+        };
+      });
 
-  const months = state.ledger.months;
-  const options = buildOptions(months);
-  startMonthSelect.innerHTML = options;
-  endMonthSelect.innerHTML = options;
-  startMonthSelect.value = options ? months[0] && formatMonth(months[0].year, months[0].month) : "";
-  endMonthSelect.value = options
-    ? formatMonth(months[months.length - 1].year, months[months.length - 1].month)
-    : "";
+      vm.state.totalSum = sum;
+    };
 
-  profilePicker.classList.add("hidden");
-  profileView.classList.remove("hidden");
-  renderRates();
-  updateSummary();
-};
+    const loadLedger = async () => {
+      const response = await $http.get("./data/ledger.json", {
+        cache: false,
+      });
+      return response.data;
+    };
 
-const init = async () => {
-  state.ledger = await loadLedger();
-  document.querySelectorAll(".profile-button").forEach((button) => {
-    button.addEventListener("click", () => {
-      selectProfile(button.dataset.profile);
-    });
-  });
+    loadLedger()
+      .then((ledger) => {
+        vm.state.ledger = ledger;
+      })
+      .catch(() => {
+        vm.state.ledger = {
+          meta: { updatedAtUtc: "N/A" },
+          months: [],
+          profiles: {},
+          rates: [],
+        };
+      });
 
-  startMonthSelect.addEventListener("change", updateSummary);
-  endMonthSelect.addEventListener("change", updateSummary);
-
-  backButton.addEventListener("click", () => {
-    profileView.classList.add("hidden");
-    profilePicker.classList.remove("hidden");
-  });
-};
-
-init();
+    $scope.$watchGroup(
+      ["vm.state.selectedStart", "vm.state.selectedEnd", "vm.state.profileKey"],
+      () => {
+        vm.updateSummary();
+      }
+    );
+  }]);
+})();
