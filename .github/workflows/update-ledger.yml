@@ -24,8 +24,6 @@ jobs:
       - name: Update ledger
         env:
           EASEE_TOKEN: ${{ secrets.EASEE_TOKEN }}
-          EASEE_USERNAME: ${{ secrets.EASEE_USERNAME }}
-          EASEE_PASSWORD: ${{ secrets.EASEE_PASSWORD }}
         run: npm run update-ledger
       - name: Configure git
         run: |

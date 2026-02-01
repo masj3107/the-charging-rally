@@ -277,7 +277,7 @@ const fetchEaseeMonthlyUsage = async (siteId, userId, token) => {
         "Content-Type": "application/json",
       },
     },
-    { label: `Easee monthly usage (${userId})`, allowInsecureTls: true }
+    { label: `Easee monthly usage (${userId})` }
   );
   if (!response.ok) {
     throw new Error(`Easee API failed for ${userId} with ${response.status}`);
@@ -301,7 +301,7 @@ const fetchEaseeSiteUsers = async (siteId, token) => {
         "Content-Type": "application/json",
       },
     },
-    { label: `Easee site users (${siteId})`, allowInsecureTls: true }
+    { label: `Easee site users (${siteId})` }
   );
   if (!response.ok) {
     throw new Error(`Easee site users failed with ${response.status}`);
@@ -335,7 +335,7 @@ const loginEasee = async (userName, password) => {
       },
       body: JSON.stringify({ userName, password }),
     },
-    { label: "Easee login", allowInsecureTls: true }
+    { label: "Easee login" }
   );
   if (!response.ok) {
     throw new Error(`Easee login failed with ${response.status}`);
