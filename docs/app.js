@@ -86,12 +86,10 @@
       vm.state.totalSum = sum;
     };
 
-    const loadLedger = async () => {
-      const response = await $http.get("./data/ledger.json", {
-        cache: false,
-      });
-      return response.data;
-    };
+    const loadLedger = () =>
+      $http
+        .get("./data/ledger.json", { cache: false })
+        .then((response) => response.data);
 
     loadLedger()
       .then((ledger) => {
