@@ -129,6 +129,60 @@ const parseJamtkraft = async () => {
     "dec",
   ];
 
+  const parseNextData = () => {
+    const nextDataRaw = $("#__NEXT_DATA__").text().trim();
+    if (!nextDataRaw) {
+      return null;
+    }
+    let nextData;
+    try {
+      nextData = JSON.parse(nextDataRaw);
+    } catch (error) {
+      return null;
+    }
+    const content = nextData?.props?.pageProps?.componentProps?.content ?? [];
+    const tables = content.map((block) => block.inlineTable).filter(Boolean);
+    const targetTable = tables.find((table) => {
+      const caption = String(table.caption ?? "").replace(/\s+/g, " ").trim();
+      return caption.endsWith("2") && caption.toLowerCase().includes("elomr");
+    });
+    if (!targetTable?.rows?.length) {
+      return null;
+    }
+
+    const [headerRow, ...dataRows] = targetTable.rows;
+    const monthHeaders = (headerRow || [])
+      .slice(1)
+      .map((cell) => String(cell?.value ?? "").trim());
+
+    const rows = {};
+    for (const row of dataRows) {
+      const cells = row || [];
+      const year = Number(String(cells[0]?.value ?? "").replace(/\s/g, ""));
+      if (!Number.isFinite(year)) {
+        continue;
+      }
+      const monthValues = {};
+      cells.slice(1).forEach((cell, index) => {
+        const header = monthHeaders[index] || "";
+        const normalizedHeader = header.slice(0, 3).toLowerCase();
+        const monthIndex = monthMap.indexOf(normalizedHeader) + 1;
+        if (!monthIndex) {
+          return;
+        }
+        const numeric = Number(
+          String(cell?.value ?? "").replace(",", ".").replace(/\s/g, "")
+        );
+        if (Number.isFinite(numeric)) {
+          monthValues[monthIndex] = numeric;
+        }
+      });
+      rows[year] = monthValues;
+    }
+
+    return Object.keys(rows).length ? rows : null;
+  };
+
   const parseTable = () => {
     const table = $("table").filter((_, tableEl) => {
       const captionText = $(tableEl).find("caption").text().trim();
@@ -169,11 +223,11 @@ const parseJamtkraft = async () => {
           if (Number.isFinite(numeric)) {
             monthValues[monthIndex] = numeric;
           }
-        });
-        rows[year] = monthValues;
       });
+      rows[year] = monthValues;
+    });
 
-    return rows;
+    return Object.keys(rows).length ? rows : null;
   };
 
   const parseText = () => {
@@ -207,7 +261,7 @@ const parseJamtkraft = async () => {
     return Object.keys(rows).length ? rows : null;
   };
 
-  const parsed = parseTable() ?? parseText();
+  const parsed = parseNextData() ?? parseTable() ?? parseText();
   if (!parsed) {
     throw new Error("Could not parse Jamtkraft Elområde 2 data");
   }
