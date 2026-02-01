@@ -23,12 +23,12 @@
     "me": {
       "label": "Jag",
       "vehicle": "VW ID.4 spacegrey",
-      "image": "assets/id4.svg"
+      "image": "assets/id4.png"
     },
     "neighbor": {
       "label": "Granne",
       "vehicle": "Kia Niro EV limegron",
-      "image": "assets/niro.svg"
+      "image": "assets/niro.png"
     }
   },
   "months": [
