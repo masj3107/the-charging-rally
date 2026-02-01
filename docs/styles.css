@@ -34,15 +34,16 @@ body {
 
 .profile-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
 }
 
 .profile-button {
   border: 1px solid #e2e8f0;
   border-radius: 12px;
-  padding: 16px;
+  padding: 20px;
   display: flex;
+  flex-direction: column;
   gap: 12px;
   align-items: center;
   background: #f9fafb;
@@ -57,13 +58,19 @@ body {
 
 .profile-button img,
 .profile-header img {
-  width: 64px;
-  height: 64px;
+  width: 160px;
+  height: 160px;
+  object-fit: contain;
 }
 
 .profile-button strong {
   display: block;
   font-size: 1.1rem;
+}
+
+.profile-button span {
+  display: block;
+  color: #6b7280;
 }
 
 .header-row {
