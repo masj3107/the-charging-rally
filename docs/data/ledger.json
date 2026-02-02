@@ -1,858 +1,468 @@
-{
-  "meta": {
-    "schemaVersion": "1.0",
-    "updatedAtUtc": "2026-02-02T10:21:38.575Z",
-    "lastRunStatus": "FAIL",
-    "lastError": "Easee site users failed with 401"
-  },
-  "identities": {
-    "siteId": 64085,
-    "meUserId": 540804,
-    "neighborUserId": 1212490
-  },
-  "rates": [
-    {
-      "from": "2024-01",
-      "localDiscountOreInclVat": 3.75,
-      "gridTransferOreInclVat": 7.5,
-      "energyTaxOreInclVat": 54.88,
-      "norrlandDeductionOreInclVat": -12
-    }
-  ],
-  "profiles": {
-    "me": {
-      "label": "Jag",
-      "vehicle": "VW ID.4 spacegrey",
-      "image": "assets/id4.png"
-    },
-    "neighbor": {
-      "label": "Granne",
-      "vehicle": "Kia Niro EV limegron",
-      "image": "assets/niro.png"
-    }
-  },
-  "months": [
-    {
-      "year": 2024,
-      "month": 1,
-      "isLocked": false,
-      "inputs": {
-        "spotOreInclVat": 94.39,
-        "meKWh": null,
-        "neighborKWh": null
-      },
-      "appliedRates": {
-        "localDiscountOreInclVat": 3.75,
-        "gridTransferOreInclVat": 7.5,
-        "energyTaxOreInclVat": 54.88,
-        "norrlandDeductionOreInclVat": -12
-      },
-      "result": {
-        "me": {
-          "adjustedElPriceOre": 90.64,
-          "elhandelKr": 0,
-          "elnatKr": 0,
-          "totalKr": 0
-        },
-        "neighbor": {
-          "adjustedElPriceOre": 90.64,
-          "elhandelKr": 0,
-          "elnatKr": 0,
-          "totalKr": 0
-        }
-      },
-      "warnings": [
-        "MissingEaseeUsageMe",
-        "MissingEaseeUsageNeighbor"
-      ]
-    },
-    {
-      "year": 2024,
-      "month": 2,
-      "isLocked": false,
-      "inputs": {
-        "spotOreInclVat": 73.79,
-        "meKWh": null,
-        "neighborKWh": null
-      },
-      "appliedRates": {
-        "localDiscountOreInclVat": 3.75,
-        "gridTransferOreInclVat": 7.5,
-        "energyTaxOreInclVat": 54.88,
-        "norrlandDeductionOreInclVat": -12
-      },
-      "result": {
-        "me": {
-          "adjustedElPriceOre": 70.04,
-          "elhandelKr": 0,
-          "elnatKr": 0,
-          "totalKr": 0
-        },
-        "neighbor": {
-          "adjustedElPriceOre": 70.04,
-          "elhandelKr": 0,
-          "elnatKr": 0,
-          "totalKr": 0
-        }
-      },
-      "warnings": [
-        "MissingEaseeUsageMe",
-        "MissingEaseeUsageNeighbor"
-      ]
-    },
-    {
-      "year": 2024,
-      "month": 3,
-      "isLocked": false,
-      "inputs": {
-        "spotOreInclVat": 85.03,
-        "meKWh": null,
-        "neighborKWh": null
-      },
-      "appliedRates": {
-        "localDiscountOreInclVat": 3.75,
-        "gridTransferOreInclVat": 7.5,
-        "energyTaxOreInclVat": 54.88,
-        "norrlandDeductionOreInclVat": -12
-      },
-      "result": {
-        "me": {
-          "adjustedElPriceOre": 81.28,
-          "elhandelKr": 0,
-          "elnatKr": 0,
-          "totalKr": 0
-        },
-        "neighbor": {
-          "adjustedElPriceOre": 81.28,
-          "elhandelKr": 0,
-          "elnatKr": 0,
-          "totalKr": 0
-        }
-      },
-      "warnings": [
-        "MissingEaseeUsageMe",
-        "MissingEaseeUsageNeighbor"
-      ]
-    },
-    {
-      "year": 2024,
-      "month": 4,
-      "isLocked": false,
-      "inputs": {
-        "spotOreInclVat": 80.23,
-        "meKWh": null,
-        "neighborKWh": null
-      },
-      "appliedRates": {
-        "localDiscountOreInclVat": 3.75,
-        "gridTransferOreInclVat": 7.5,
-        "energyTaxOreInclVat": 54.88,
-        "norrlandDeductionOreInclVat": -12
-      },
-      "result": {
-        "me": {
-          "adjustedElPriceOre": 76.48,
-          "elhandelKr": 0,
-          "elnatKr": 0,
-          "totalKr": 0
-        },
-        "neighbor": {
-          "adjustedElPriceOre": 76.48,
-          "elhandelKr": 0,
-          "elnatKr": 0,
-          "totalKr": 0
-        }
-      },
-      "warnings": [
-        "MissingEaseeUsageMe",
-        "MissingEaseeUsageNeighbor"
-      ]
-    },
-    {
-      "year": 2024,
-      "month": 5,
-      "isLocked": false,
-      "inputs": {
-        "spotOreInclVat": 39.21,
-        "meKWh": null,
-        "neighborKWh": null
-      },
-      "appliedRates": {
-        "localDiscountOreInclVat": 3.75,
-        "gridTransferOreInclVat": 7.5,
-        "energyTaxOreInclVat": 54.88,
-        "norrlandDeductionOreInclVat": -12
-      },
-      "result": {
-        "me": {
-          "adjustedElPriceOre": 35.46,
-          "elhandelKr": 0,
-          "elnatKr": 0,
-          "totalKr": 0
-        },
-        "neighbor": {
-          "adjustedElPriceOre": 35.46,
-          "elhandelKr": 0,
-          "elnatKr": 0,
-          "totalKr": 0
-        }
-      },
-      "warnings": [
-        "MissingEaseeUsageMe",
-        "MissingEaseeUsageNeighbor"
-      ]
-    },
-    {
-      "year": 2024,
-      "month": 6,
-      "isLocked": false,
-      "inputs": {
-        "spotOreInclVat": 45.01,
-        "meKWh": null,
-        "neighborKWh": null
-      },
-      "appliedRates": {
-        "localDiscountOreInclVat": 3.75,
-        "gridTransferOreInclVat": 7.5,
-        "energyTaxOreInclVat": 54.88,
-        "norrlandDeductionOreInclVat": -12
-      },
-      "result": {
-        "me": {
-          "adjustedElPriceOre": 41.26,
-          "elhandelKr": 0,
-          "elnatKr": 0,
-          "totalKr": 0
-        },
-        "neighbor": {
-          "adjustedElPriceOre": 41.26,
-          "elhandelKr": 0,
-          "elnatKr": 0,
-          "totalKr": 0
-        }
-      },
-      "warnings": [
-        "MissingEaseeUsageMe",
-        "MissingEaseeUsageNeighbor"
-      ]
-    },
-    {
-      "year": 2024,
-      "month": 7,
-      "isLocked": false,
-      "inputs": {
-        "spotOreInclVat": 40,
-        "meKWh": null,
-        "neighborKWh": null
-      },
-      "appliedRates": {
-        "localDiscountOreInclVat": 3.75,
-        "gridTransferOreInclVat": 7.5,
-        "energyTaxOreInclVat": 54.88,
-        "norrlandDeductionOreInclVat": -12
-      },
-      "result": {
-        "me": {
-          "adjustedElPriceOre": 36.25,
-          "elhandelKr": 0,
-          "elnatKr": 0,
-          "totalKr": 0
-        },
-        "neighbor": {
-          "adjustedElPriceOre": 36.25,
-          "elhandelKr": 0,
-          "elnatKr": 0,
-          "totalKr": 0
-        }
-      },
-      "warnings": [
-        "MissingEaseeUsageMe",
-        "MissingEaseeUsageNeighbor"
-      ]
-    },
-    {
-      "year": 2024,
-      "month": 8,
-      "isLocked": false,
-      "inputs": {
-        "spotOreInclVat": 24.71,
-        "meKWh": null,
-        "neighborKWh": null
-      },
-      "appliedRates": {
-        "localDiscountOreInclVat": 3.75,
-        "gridTransferOreInclVat": 7.5,
-        "energyTaxOreInclVat": 54.88,
-        "norrlandDeductionOreInclVat": -12
-      },
-      "result": {
-        "me": {
-          "adjustedElPriceOre": 20.96,
-          "elhandelKr": 0,
-          "elnatKr": 0,
-          "totalKr": 0
-        },
-        "neighbor": {
-          "adjustedElPriceOre": 20.96,
-          "elhandelKr": 0,
-          "elnatKr": 0,
-          "totalKr": 0
-        }
-      },
-      "warnings": [
-        "MissingEaseeUsageMe",
-        "MissingEaseeUsageNeighbor"
-      ]
-    },
-    {
-      "year": 2024,
-      "month": 9,
-      "isLocked": false,
-      "inputs": {
-        "spotOreInclVat": 28.18,
-        "meKWh": null,
-        "neighborKWh": null
-      },
-      "appliedRates": {
-        "localDiscountOreInclVat": 3.75,
-        "gridTransferOreInclVat": 7.5,
-        "energyTaxOreInclVat": 54.88,
-        "norrlandDeductionOreInclVat": -12
-      },
-      "result": {
-        "me": {
-          "adjustedElPriceOre": 24.43,
-          "elhandelKr": 0,
-          "elnatKr": 0,
-          "totalKr": 0
-        },
-        "neighbor": {
-          "adjustedElPriceOre": 24.43,
-          "elhandelKr": 0,
-          "elnatKr": 0,
-          "totalKr": 0
-        }
-      },
-      "warnings": [
-        "MissingEaseeUsageMe",
-        "MissingEaseeUsageNeighbor"
-      ]
-    },
-    {
-      "year": 2024,
-      "month": 10,
-      "isLocked": false,
-      "inputs": {
-        "spotOreInclVat": 31.51,
-        "meKWh": null,
-        "neighborKWh": null
-      },
-      "appliedRates": {
-        "localDiscountOreInclVat": 3.75,
-        "gridTransferOreInclVat": 7.5,
-        "energyTaxOreInclVat": 54.88,
-        "norrlandDeductionOreInclVat": -12
-      },
-      "result": {
-        "me": {
-          "adjustedElPriceOre": 27.76,
-          "elhandelKr": 0,
-          "elnatKr": 0,
-          "totalKr": 0
-        },
-        "neighbor": {
-          "adjustedElPriceOre": 27.76,
-          "elhandelKr": 0,
-          "elnatKr": 0,
-          "totalKr": 0
-        }
-      },
-      "warnings": [
-        "MissingEaseeUsageMe",
-        "MissingEaseeUsageNeighbor"
-      ]
-    },
-    {
-      "year": 2024,
-      "month": 11,
-      "isLocked": false,
-      "inputs": {
-        "spotOreInclVat": 39.27,
-        "meKWh": null,
-        "neighborKWh": null
-      },
-      "appliedRates": {
-        "localDiscountOreInclVat": 3.75,
-        "gridTransferOreInclVat": 7.5,
-        "energyTaxOreInclVat": 54.88,
-        "norrlandDeductionOreInclVat": -12
-      },
-      "result": {
-        "me": {
-          "adjustedElPriceOre": 35.52,
-          "elhandelKr": 0,
-          "elnatKr": 0,
-          "totalKr": 0
-        },
-        "neighbor": {
-          "adjustedElPriceOre": 35.52,
-          "elhandelKr": 0,
-          "elnatKr": 0,
-          "totalKr": 0
-        }
-      },
-      "warnings": [
-        "MissingEaseeUsageMe",
-        "MissingEaseeUsageNeighbor"
-      ]
-    },
-    {
-      "year": 2024,
-      "month": 12,
-      "isLocked": false,
-      "inputs": {
-        "spotOreInclVat": 29.43,
-        "meKWh": null,
-        "neighborKWh": null
-      },
-      "appliedRates": {
-        "localDiscountOreInclVat": 3.75,
-        "gridTransferOreInclVat": 7.5,
-        "energyTaxOreInclVat": 54.88,
-        "norrlandDeductionOreInclVat": -12
-      },
-      "result": {
-        "me": {
-          "adjustedElPriceOre": 25.68,
-          "elhandelKr": 0,
-          "elnatKr": 0,
-          "totalKr": 0
-        },
-        "neighbor": {
-          "adjustedElPriceOre": 25.68,
-          "elhandelKr": 0,
-          "elnatKr": 0,
-          "totalKr": 0
-        }
-      },
-      "warnings": [
-        "MissingEaseeUsageMe",
-        "MissingEaseeUsageNeighbor"
-      ]
-    },
-    {
-      "year": 2025,
-      "month": 1,
-      "isLocked": false,
-      "inputs": {
-        "spotOreInclVat": 44.05,
-        "meKWh": null,
-        "neighborKWh": null
-      },
-      "appliedRates": {
-        "localDiscountOreInclVat": 3.75,
-        "gridTransferOreInclVat": 7.5,
-        "energyTaxOreInclVat": 54.88,
-        "norrlandDeductionOreInclVat": -12
-      },
-      "result": {
-        "me": {
-          "adjustedElPriceOre": 40.3,
-          "elhandelKr": 0,
-          "elnatKr": 0,
-          "totalKr": 0
-        },
-        "neighbor": {
-          "adjustedElPriceOre": 40.3,
-          "elhandelKr": 0,
-          "elnatKr": 0,
-          "totalKr": 0
-        }
-      },
-      "warnings": [
-        "MissingEaseeUsageMe",
-        "MissingEaseeUsageNeighbor"
-      ]
-    },
-    {
-      "year": 2025,
-      "month": 2,
-      "isLocked": false,
-      "inputs": {
-        "spotOreInclVat": 30.55,
-        "meKWh": null,
-        "neighborKWh": null
-      },
-      "appliedRates": {
-        "localDiscountOreInclVat": 3.75,
-        "gridTransferOreInclVat": 7.5,
-        "energyTaxOreInclVat": 54.88,
-        "norrlandDeductionOreInclVat": -12
-      },
-      "result": {
-        "me": {
-          "adjustedElPriceOre": 26.8,
-          "elhandelKr": 0,
-          "elnatKr": 0,
-          "totalKr": 0
-        },
-        "neighbor": {
-          "adjustedElPriceOre": 26.8,
-          "elhandelKr": 0,
-          "elnatKr": 0,
-          "totalKr": 0
-        }
-      },
-      "warnings": [
-        "MissingEaseeUsageMe",
-        "MissingEaseeUsageNeighbor"
-      ]
-    },
-    {
-      "year": 2025,
-      "month": 3,
-      "isLocked": false,
-      "inputs": {
-        "spotOreInclVat": 26.6,
-        "meKWh": null,
-        "neighborKWh": null
-      },
-      "appliedRates": {
-        "localDiscountOreInclVat": 3.75,
-        "gridTransferOreInclVat": 7.5,
-        "energyTaxOreInclVat": 54.88,
-        "norrlandDeductionOreInclVat": -12
-      },
-      "result": {
-        "me": {
-          "adjustedElPriceOre": 22.85,
-          "elhandelKr": 0,
-          "elnatKr": 0,
-          "totalKr": 0
-        },
-        "neighbor": {
-          "adjustedElPriceOre": 22.85,
-          "elhandelKr": 0,
-          "elnatKr": 0,
-          "totalKr": 0
-        }
-      },
-      "warnings": [
-        "MissingEaseeUsageMe",
-        "MissingEaseeUsageNeighbor"
-      ]
-    },
-    {
-      "year": 2025,
-      "month": 4,
-      "isLocked": false,
-      "inputs": {
-        "spotOreInclVat": 29.98,
-        "meKWh": 46.802161000000005,
-        "neighborKWh": 220.57804
-      },
-      "appliedRates": {
-        "localDiscountOreInclVat": 3.75,
-        "gridTransferOreInclVat": 7.5,
-        "energyTaxOreInclVat": 54.88,
-        "norrlandDeductionOreInclVat": -12
-      },
-      "result": {
-        "me": {
-          "adjustedElPriceOre": 26.23,
-          "elhandelKr": 12.28,
-          "elnatKr": 23.58,
-          "totalKr": 35.86
-        },
-        "neighbor": {
-          "adjustedElPriceOre": 26.23,
-          "elhandelKr": 57.86,
-          "elnatKr": 111.13,
-          "totalKr": 168.99
-        }
-      },
-      "warnings": []
-    },
-    {
-      "year": 2025,
-      "month": 5,
-      "isLocked": false,
-      "inputs": {
-        "spotOreInclVat": 31.24,
-        "meKWh": 131.80841,
-        "neighborKWh": 290.177632
-      },
-      "appliedRates": {
-        "localDiscountOreInclVat": 3.75,
-        "gridTransferOreInclVat": 7.5,
-        "energyTaxOreInclVat": 54.88,
-        "norrlandDeductionOreInclVat": -12
-      },
-      "result": {
-        "me": {
-          "adjustedElPriceOre": 27.49,
-          "elhandelKr": 36.23,
-          "elnatKr": 66.41,
-          "totalKr": 102.64
-        },
-        "neighbor": {
-          "adjustedElPriceOre": 27.49,
-          "elhandelKr": 79.77,
-          "elnatKr": 146.19,
-          "totalKr": 225.96
-        }
-      },
-      "warnings": []
-    },
-    {
-      "year": 2025,
-      "month": 6,
-      "isLocked": false,
-      "inputs": {
-        "spotOreInclVat": 19.17,
-        "meKWh": 101.27413999999999,
-        "neighborKWh": 225.38423799999998
-      },
-      "appliedRates": {
-        "localDiscountOreInclVat": 3.75,
-        "gridTransferOreInclVat": 7.5,
-        "energyTaxOreInclVat": 54.88,
-        "norrlandDeductionOreInclVat": -12
-      },
-      "result": {
-        "me": {
-          "adjustedElPriceOre": 15.42,
-          "elhandelKr": 15.62,
-          "elnatKr": 51.02,
-          "totalKr": 66.64
-        },
-        "neighbor": {
-          "adjustedElPriceOre": 15.42,
-          "elhandelKr": 34.75,
-          "elnatKr": 113.55,
-          "totalKr": 148.3
-        }
-      },
-      "warnings": []
-    },
-    {
-      "year": 2025,
-      "month": 7,
-      "isLocked": false,
-      "inputs": {
-        "spotOreInclVat": 31.55,
-        "meKWh": 32.391891,
-        "neighborKWh": 193.094523
-      },
-      "appliedRates": {
-        "localDiscountOreInclVat": 3.75,
-        "gridTransferOreInclVat": 7.5,
-        "energyTaxOreInclVat": 54.88,
-        "norrlandDeductionOreInclVat": -12
-      },
-      "result": {
-        "me": {
-          "adjustedElPriceOre": 27.8,
-          "elhandelKr": 9,
-          "elnatKr": 16.32,
-          "totalKr": 25.32
-        },
-        "neighbor": {
-          "adjustedElPriceOre": 27.8,
-          "elhandelKr": 53.68,
-          "elnatKr": 97.28,
-          "totalKr": 150.96
-        }
-      },
-      "warnings": []
-    },
-    {
-      "year": 2025,
-      "month": 8,
-      "isLocked": false,
-      "inputs": {
-        "spotOreInclVat": 41.43,
-        "meKWh": 121.73613399999999,
-        "neighborKWh": 114.62412700000002
-      },
-      "appliedRates": {
-        "localDiscountOreInclVat": 3.75,
-        "gridTransferOreInclVat": 7.5,
-        "energyTaxOreInclVat": 54.88,
-        "norrlandDeductionOreInclVat": -12
-      },
-      "result": {
-        "me": {
-          "adjustedElPriceOre": 37.68,
-          "elhandelKr": 45.87,
-          "elnatKr": 61.33,
-          "totalKr": 107.2
-        },
-        "neighbor": {
-          "adjustedElPriceOre": 37.68,
-          "elhandelKr": 43.19,
-          "elnatKr": 57.75,
-          "totalKr": 100.94
-        }
-      },
-      "warnings": []
-    },
-    {
-      "year": 2025,
-      "month": 9,
-      "isLocked": false,
-      "inputs": {
-        "spotOreInclVat": 32.45,
-        "meKWh": 127.690053,
-        "neighborKWh": 274.239261
-      },
-      "appliedRates": {
-        "localDiscountOreInclVat": 3.75,
-        "gridTransferOreInclVat": 7.5,
-        "energyTaxOreInclVat": 54.88,
-        "norrlandDeductionOreInclVat": -12
-      },
-      "result": {
-        "me": {
-          "adjustedElPriceOre": 28.7,
-          "elhandelKr": 36.65,
-          "elnatKr": 64.33,
-          "totalKr": 100.98
-        },
-        "neighbor": {
-          "adjustedElPriceOre": 28.7,
-          "elhandelKr": 78.71,
-          "elnatKr": 138.16,
-          "totalKr": 216.87
-        }
-      },
-      "warnings": []
-    },
-    {
-      "year": 2025,
-      "month": 10,
-      "isLocked": false,
-      "inputs": {
-        "spotOreInclVat": 28.99,
-        "meKWh": 169.672615,
-        "neighborKWh": 337.033487
-      },
-      "appliedRates": {
-        "localDiscountOreInclVat": 3.75,
-        "gridTransferOreInclVat": 7.5,
-        "energyTaxOreInclVat": 54.88,
-        "norrlandDeductionOreInclVat": -12
-      },
-      "result": {
-        "me": {
-          "adjustedElPriceOre": 25.24,
-          "elhandelKr": 42.83,
-          "elnatKr": 85.48,
-          "totalKr": 128.31
-        },
-        "neighbor": {
-          "adjustedElPriceOre": 25.24,
-          "elhandelKr": 85.07,
-          "elnatKr": 169.8,
-          "totalKr": 254.87
-        }
-      },
-      "warnings": []
-    },
-    {
-      "year": 2025,
-      "month": 11,
-      "isLocked": false,
-      "inputs": {
-        "spotOreInclVat": 58.72,
-        "meKWh": 352.781836,
-        "neighborKWh": 343.13554200000004
-      },
-      "appliedRates": {
-        "localDiscountOreInclVat": 3.75,
-        "gridTransferOreInclVat": 7.5,
-        "energyTaxOreInclVat": 54.88,
-        "norrlandDeductionOreInclVat": -12
-      },
-      "result": {
-        "me": {
-          "adjustedElPriceOre": 54.97,
-          "elhandelKr": 193.92,
-          "elnatKr": 177.73,
-          "totalKr": 371.65
-        },
-        "neighbor": {
-          "adjustedElPriceOre": 54.97,
-          "elhandelKr": 188.62,
-          "elnatKr": 172.87,
-          "totalKr": 361.49
-        }
-      },
-      "warnings": []
-    },
-    {
-      "year": 2025,
-      "month": 12,
-      "isLocked": false,
-      "inputs": {
-        "spotOreInclVat": 54.89,
-        "meKWh": 165.11214999999999,
-        "neighborKWh": 308.09471499999995
-      },
-      "appliedRates": {
-        "localDiscountOreInclVat": 3.75,
-        "gridTransferOreInclVat": 7.5,
-        "energyTaxOreInclVat": 54.88,
-        "norrlandDeductionOreInclVat": -12
-      },
-      "result": {
-        "me": {
-          "adjustedElPriceOre": 51.14,
-          "elhandelKr": 84.44,
-          "elnatKr": 83.18,
-          "totalKr": 167.62
-        },
-        "neighbor": {
-          "adjustedElPriceOre": 51.14,
-          "elhandelKr": 157.56,
-          "elnatKr": 155.22,
-          "totalKr": 312.78
-        }
-      },
-      "warnings": []
-    },
-    {
-      "year": 2026,
-      "month": 1,
-      "isLocked": false,
-      "inputs": {
-        "spotOreInclVat": null,
-        "meKWh": 365.812684,
-        "neighborKWh": 487.913069
-      },
-      "appliedRates": {
-        "localDiscountOreInclVat": 3.75,
-        "gridTransferOreInclVat": 7.5,
-        "energyTaxOreInclVat": 54.88,
-        "norrlandDeductionOreInclVat": -12
-      },
-      "result": {
-        "me": {
-          "adjustedElPriceOre": null,
-          "elhandelKr": 0,
-          "elnatKr": 0,
-          "totalKr": 0
-        },
-        "neighbor": {
-          "adjustedElPriceOre": null,
-          "elhandelKr": 0,
-          "elnatKr": 0,
-          "totalKr": 0
-        }
-      },
-      "warnings": [
-        "MissingJamtkraftPrice"
-      ]
-    }
-  ]
+﻿{
+    "meta":  {
+                 "schemaVersion":  "1.0",
+                 "updatedAtUtc":  "2026-02-02T10:21:38.575Z",
+                 "lastRunStatus":  "FAIL",
+                 "lastError":  "Easee site users failed with 401"
+             },
+    "identities":  {
+                       "siteId":  64085,
+                       "meUserId":  540804,
+                       "neighborUserId":  1212490
+                   },
+    "rates":  [
+                  {
+                      "from":  "2024-01",
+                      "localDiscountOreInclVat":  3.75,
+                      "gridTransferOreInclVat":  7.5,
+                      "energyTaxOreInclVat":  54.88,
+                      "norrlandDeductionOreInclVat":  -12
+                  }
+              ],
+    "profiles":  {
+                     "me":  {
+                                "label":  "Jag",
+                                "vehicle":  "VW ID.4 spacegrey",
+                                "image":  "assets/id4.png"
+                            },
+                     "neighbor":  {
+                                      "label":  "Granne",
+                                      "vehicle":  "Kia Niro EV limegron",
+                                      "image":  "assets/niro.png"
+                                  }
+                 },
+    "months":  [
+                   {
+                       "year":  2025,
+                       "month":  1,
+                       "isLocked":  false,
+                       "inputs":  {
+                                      "spotOreInclVat":  44.05,
+                                      "meKWh":  null,
+                                      "neighborKWh":  null
+                                  },
+                       "appliedRates":  {
+                                            "localDiscountOreInclVat":  3.75,
+                                            "gridTransferOreInclVat":  7.5,
+                                            "energyTaxOreInclVat":  54.88,
+                                            "norrlandDeductionOreInclVat":  -12
+                                        },
+                       "result":  {
+                                      "me":  {
+                                                 "adjustedElPriceOre":  40.3,
+                                                 "elhandelKr":  0,
+                                                 "elnatKr":  0,
+                                                 "totalKr":  0
+                                             },
+                                      "neighbor":  {
+                                                       "adjustedElPriceOre":  40.3,
+                                                       "elhandelKr":  0,
+                                                       "elnatKr":  0,
+                                                       "totalKr":  0
+                                                   }
+                                  },
+                       "warnings":  [
+                                        "MissingEaseeUsageMe",
+                                        "MissingEaseeUsageNeighbor"
+                                    ]
+                   },
+                   {
+                       "year":  2025,
+                       "month":  2,
+                       "isLocked":  false,
+                       "inputs":  {
+                                      "spotOreInclVat":  30.55,
+                                      "meKWh":  null,
+                                      "neighborKWh":  null
+                                  },
+                       "appliedRates":  {
+                                            "localDiscountOreInclVat":  3.75,
+                                            "gridTransferOreInclVat":  7.5,
+                                            "energyTaxOreInclVat":  54.88,
+                                            "norrlandDeductionOreInclVat":  -12
+                                        },
+                       "result":  {
+                                      "me":  {
+                                                 "adjustedElPriceOre":  26.8,
+                                                 "elhandelKr":  0,
+                                                 "elnatKr":  0,
+                                                 "totalKr":  0
+                                             },
+                                      "neighbor":  {
+                                                       "adjustedElPriceOre":  26.8,
+                                                       "elhandelKr":  0,
+                                                       "elnatKr":  0,
+                                                       "totalKr":  0
+                                                   }
+                                  },
+                       "warnings":  [
+                                        "MissingEaseeUsageMe",
+                                        "MissingEaseeUsageNeighbor"
+                                    ]
+                   },
+                   {
+                       "year":  2025,
+                       "month":  3,
+                       "isLocked":  false,
+                       "inputs":  {
+                                      "spotOreInclVat":  26.6,
+                                      "meKWh":  null,
+                                      "neighborKWh":  null
+                                  },
+                       "appliedRates":  {
+                                            "localDiscountOreInclVat":  3.75,
+                                            "gridTransferOreInclVat":  7.5,
+                                            "energyTaxOreInclVat":  54.88,
+                                            "norrlandDeductionOreInclVat":  -12
+                                        },
+                       "result":  {
+                                      "me":  {
+                                                 "adjustedElPriceOre":  22.85,
+                                                 "elhandelKr":  0,
+                                                 "elnatKr":  0,
+                                                 "totalKr":  0
+                                             },
+                                      "neighbor":  {
+                                                       "adjustedElPriceOre":  22.85,
+                                                       "elhandelKr":  0,
+                                                       "elnatKr":  0,
+                                                       "totalKr":  0
+                                                   }
+                                  },
+                       "warnings":  [
+                                        "MissingEaseeUsageMe",
+                                        "MissingEaseeUsageNeighbor"
+                                    ]
+                   },
+                   {
+                       "year":  2025,
+                       "month":  4,
+                       "isLocked":  false,
+                       "inputs":  {
+                                      "spotOreInclVat":  29.98,
+                                      "meKWh":  46.802161000000005,
+                                      "neighborKWh":  220.57804
+                                  },
+                       "appliedRates":  {
+                                            "localDiscountOreInclVat":  3.75,
+                                            "gridTransferOreInclVat":  7.5,
+                                            "energyTaxOreInclVat":  54.88,
+                                            "norrlandDeductionOreInclVat":  -12
+                                        },
+                       "result":  {
+                                      "me":  {
+                                                 "adjustedElPriceOre":  26.23,
+                                                 "elhandelKr":  12.28,
+                                                 "elnatKr":  23.58,
+                                                 "totalKr":  35.86
+                                             },
+                                      "neighbor":  {
+                                                       "adjustedElPriceOre":  26.23,
+                                                       "elhandelKr":  57.86,
+                                                       "elnatKr":  111.13,
+                                                       "totalKr":  168.99
+                                                   }
+                                  },
+                       "warnings":  [
+
+                                    ]
+                   },
+                   {
+                       "year":  2025,
+                       "month":  5,
+                       "isLocked":  false,
+                       "inputs":  {
+                                      "spotOreInclVat":  31.24,
+                                      "meKWh":  131.80841,
+                                      "neighborKWh":  290.177632
+                                  },
+                       "appliedRates":  {
+                                            "localDiscountOreInclVat":  3.75,
+                                            "gridTransferOreInclVat":  7.5,
+                                            "energyTaxOreInclVat":  54.88,
+                                            "norrlandDeductionOreInclVat":  -12
+                                        },
+                       "result":  {
+                                      "me":  {
+                                                 "adjustedElPriceOre":  27.49,
+                                                 "elhandelKr":  36.23,
+                                                 "elnatKr":  66.41,
+                                                 "totalKr":  102.64
+                                             },
+                                      "neighbor":  {
+                                                       "adjustedElPriceOre":  27.49,
+                                                       "elhandelKr":  79.77,
+                                                       "elnatKr":  146.19,
+                                                       "totalKr":  225.96
+                                                   }
+                                  },
+                       "warnings":  [
+
+                                    ]
+                   },
+                   {
+                       "year":  2025,
+                       "month":  6,
+                       "isLocked":  false,
+                       "inputs":  {
+                                      "spotOreInclVat":  19.17,
+                                      "meKWh":  101.27413999999999,
+                                      "neighborKWh":  225.38423799999998
+                                  },
+                       "appliedRates":  {
+                                            "localDiscountOreInclVat":  3.75,
+                                            "gridTransferOreInclVat":  7.5,
+                                            "energyTaxOreInclVat":  54.88,
+                                            "norrlandDeductionOreInclVat":  -12
+                                        },
+                       "result":  {
+                                      "me":  {
+                                                 "adjustedElPriceOre":  15.42,
+                                                 "elhandelKr":  15.62,
+                                                 "elnatKr":  51.02,
+                                                 "totalKr":  66.64
+                                             },
+                                      "neighbor":  {
+                                                       "adjustedElPriceOre":  15.42,
+                                                       "elhandelKr":  34.75,
+                                                       "elnatKr":  113.55,
+                                                       "totalKr":  148.3
+                                                   }
+                                  },
+                       "warnings":  [
+
+                                    ]
+                   },
+                   {
+                       "year":  2025,
+                       "month":  7,
+                       "isLocked":  false,
+                       "inputs":  {
+                                      "spotOreInclVat":  31.55,
+                                      "meKWh":  32.391891,
+                                      "neighborKWh":  193.094523
+                                  },
+                       "appliedRates":  {
+                                            "localDiscountOreInclVat":  3.75,
+                                            "gridTransferOreInclVat":  7.5,
+                                            "energyTaxOreInclVat":  54.88,
+                                            "norrlandDeductionOreInclVat":  -12
+                                        },
+                       "result":  {
+                                      "me":  {
+                                                 "adjustedElPriceOre":  27.8,
+                                                 "elhandelKr":  9,
+                                                 "elnatKr":  16.32,
+                                                 "totalKr":  25.32
+                                             },
+                                      "neighbor":  {
+                                                       "adjustedElPriceOre":  27.8,
+                                                       "elhandelKr":  53.68,
+                                                       "elnatKr":  97.28,
+                                                       "totalKr":  150.96
+                                                   }
+                                  },
+                       "warnings":  [
+
+                                    ]
+                   },
+                   {
+                       "year":  2025,
+                       "month":  8,
+                       "isLocked":  false,
+                       "inputs":  {
+                                      "spotOreInclVat":  41.43,
+                                      "meKWh":  121.73613399999999,
+                                      "neighborKWh":  114.62412700000002
+                                  },
+                       "appliedRates":  {
+                                            "localDiscountOreInclVat":  3.75,
+                                            "gridTransferOreInclVat":  7.5,
+                                            "energyTaxOreInclVat":  54.88,
+                                            "norrlandDeductionOreInclVat":  -12
+                                        },
+                       "result":  {
+                                      "me":  {
+                                                 "adjustedElPriceOre":  37.68,
+                                                 "elhandelKr":  45.87,
+                                                 "elnatKr":  61.33,
+                                                 "totalKr":  107.2
+                                             },
+                                      "neighbor":  {
+                                                       "adjustedElPriceOre":  37.68,
+                                                       "elhandelKr":  43.19,
+                                                       "elnatKr":  57.75,
+                                                       "totalKr":  100.94
+                                                   }
+                                  },
+                       "warnings":  [
+
+                                    ]
+                   },
+                   {
+                       "year":  2025,
+                       "month":  9,
+                       "isLocked":  false,
+                       "inputs":  {
+                                      "spotOreInclVat":  32.45,
+                                      "meKWh":  127.690053,
+                                      "neighborKWh":  274.239261
+                                  },
+                       "appliedRates":  {
+                                            "localDiscountOreInclVat":  3.75,
+                                            "gridTransferOreInclVat":  7.5,
+                                            "energyTaxOreInclVat":  54.88,
+                                            "norrlandDeductionOreInclVat":  -12
+                                        },
+                       "result":  {
+                                      "me":  {
+                                                 "adjustedElPriceOre":  28.7,
+                                                 "elhandelKr":  36.65,
+                                                 "elnatKr":  64.33,
+                                                 "totalKr":  100.98
+                                             },
+                                      "neighbor":  {
+                                                       "adjustedElPriceOre":  28.7,
+                                                       "elhandelKr":  78.71,
+                                                       "elnatKr":  138.16,
+                                                       "totalKr":  216.87
+                                                   }
+                                  },
+                       "warnings":  [
+
+                                    ]
+                   },
+                   {
+                       "year":  2025,
+                       "month":  10,
+                       "isLocked":  false,
+                       "inputs":  {
+                                      "spotOreInclVat":  28.99,
+                                      "meKWh":  169.672615,
+                                      "neighborKWh":  337.033487
+                                  },
+                       "appliedRates":  {
+                                            "localDiscountOreInclVat":  3.75,
+                                            "gridTransferOreInclVat":  7.5,
+                                            "energyTaxOreInclVat":  54.88,
+                                            "norrlandDeductionOreInclVat":  -12
+                                        },
+                       "result":  {
+                                      "me":  {
+                                                 "adjustedElPriceOre":  25.24,
+                                                 "elhandelKr":  42.83,
+                                                 "elnatKr":  85.48,
+                                                 "totalKr":  128.31
+                                             },
+                                      "neighbor":  {
+                                                       "adjustedElPriceOre":  25.24,
+                                                       "elhandelKr":  85.07,
+                                                       "elnatKr":  169.8,
+                                                       "totalKr":  254.87
+                                                   }
+                                  },
+                       "warnings":  [
+
+                                    ]
+                   },
+                   {
+                       "year":  2025,
+                       "month":  11,
+                       "isLocked":  false,
+                       "inputs":  {
+                                      "spotOreInclVat":  58.72,
+                                      "meKWh":  352.781836,
+                                      "neighborKWh":  343.13554200000004
+                                  },
+                       "appliedRates":  {
+                                            "localDiscountOreInclVat":  3.75,
+                                            "gridTransferOreInclVat":  7.5,
+                                            "energyTaxOreInclVat":  54.88,
+                                            "norrlandDeductionOreInclVat":  -12
+                                        },
+                       "result":  {
+                                      "me":  {
+                                                 "adjustedElPriceOre":  54.97,
+                                                 "elhandelKr":  193.92,
+                                                 "elnatKr":  177.73,
+                                                 "totalKr":  371.65
+                                             },
+                                      "neighbor":  {
+                                                       "adjustedElPriceOre":  54.97,
+                                                       "elhandelKr":  188.62,
+                                                       "elnatKr":  172.87,
+                                                       "totalKr":  361.49
+                                                   }
+                                  },
+                       "warnings":  [
+
+                                    ]
+                   },
+                   {
+                       "year":  2025,
+                       "month":  12,
+                       "isLocked":  false,
+                       "inputs":  {
+                                      "spotOreInclVat":  54.89,
+                                      "meKWh":  165.11214999999999,
+                                      "neighborKWh":  308.09471499999995
+                                  },
+                       "appliedRates":  {
+                                            "localDiscountOreInclVat":  3.75,
+                                            "gridTransferOreInclVat":  7.5,
+                                            "energyTaxOreInclVat":  54.88,
+                                            "norrlandDeductionOreInclVat":  -12
+                                        },
+                       "result":  {
+                                      "me":  {
+                                                 "adjustedElPriceOre":  51.14,
+                                                 "elhandelKr":  84.44,
+                                                 "elnatKr":  83.18,
+                                                 "totalKr":  167.62
+                                             },
+                                      "neighbor":  {
+                                                       "adjustedElPriceOre":  51.14,
+                                                       "elhandelKr":  157.56,
+                                                       "elnatKr":  155.22,
+                                                       "totalKr":  312.78
+                                                   }
+                                  },
+                       "warnings":  [
+
+                                    ]
+                   },
+                   {
+                       "year":  2026,
+                       "month":  1,
+                       "isLocked":  false,
+                       "inputs":  {
+                                      "spotOreInclVat":  null,
+                                      "meKWh":  365.812684,
+                                      "neighborKWh":  487.913069
+                                  },
+                       "appliedRates":  {
+                                            "localDiscountOreInclVat":  3.75,
+                                            "gridTransferOreInclVat":  7.5,
+                                            "energyTaxOreInclVat":  54.88,
+                                            "norrlandDeductionOreInclVat":  -12
+                                        },
+                       "result":  {
+                                      "me":  {
+                                                 "adjustedElPriceOre":  null,
+                                                 "elhandelKr":  0,
+                                                 "elnatKr":  0,
+                                                 "totalKr":  0
+                                             },
+                                      "neighbor":  {
+                                                       "adjustedElPriceOre":  null,
+                                                       "elhandelKr":  0,
+                                                       "elnatKr":  0,
+                                                       "totalKr":  0
+                                                   }
+                                  },
+                       "warnings":  [
+                                        "MissingJamtkraftPrice"
+                                    ]
+                   }
+               ]
 }
