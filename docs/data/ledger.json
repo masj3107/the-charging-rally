@@ -1,7 +1,7 @@
 {
   "meta": {
     "schemaVersion": "1.0",
-    "updatedAtUtc": "2026-04-30T10:39:59.382Z",
+    "updatedAtUtc": "2026-05-01T10:35:18.492Z",
     "lastRunStatus": "FAIL",
     "lastError": "Easee site users failed with 401"
   },
