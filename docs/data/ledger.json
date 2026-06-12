@@ -1,9 +1,9 @@
 {
   "meta": {
     "schemaVersion": "1.0",
-    "updatedAtUtc": "2026-06-11T11:37:25.741Z",
+    "updatedAtUtc": "2026-06-12T11:21:34.988Z",
     "lastRunStatus": "FAIL",
-    "lastError": "Easee site users failed with 401"
+    "lastError": "Easee site users failed with 403"
   },
   "identities": {
     "siteId": 64085,
