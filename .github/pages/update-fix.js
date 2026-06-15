@@ -1,4 +1,4 @@
-(() => {
+﻿(() => {
   const LEDGER_PATTERN = /(^|\/)data\/ledger\.json(?:[?#].*)?$/;
   const BANNER_ID = "sync-status-banner";
   const STYLE_ID = "sync-status-banner-style";
@@ -140,7 +140,7 @@
 
   function formatTimestamp(value) {
     if (!value || value === "N/A") {
-      return "okand tid";
+      return "okänd tid";
     }
 
     const date = new Date(value);
@@ -189,7 +189,7 @@
     title.textContent = "Synk misslyckades";
 
     const body = document.createElement("p");
-    body.textContent = `Visar senast tillgangliga data fran ${formatTimestamp(meta.updatedAtUtc)}. ${meta.lastError || "Okant fel i uppdateringen."}`;
+    body.textContent = `Visar senast tillgängliga data från ${formatTimestamp(meta.updatedAtUtc)}. ${meta.lastError || "Okänt fel i uppdateringen."}`;
 
     const button = document.createElement("button");
     button.type = "button";
@@ -215,7 +215,7 @@
       renderBanner({
         lastRunStatus: "FAIL",
         updatedAtUtc: "N/A",
-        lastError: "Kunde inte lasa status for senaste uppdateringen."
+        lastError: "Kunde inte läsa status för senaste uppdateringen."
       });
     }
   }
