@@ -5,11 +5,6 @@
     "lastRunStatus": "OK",
     "lastError": null
   },
-  "identities": {
-    "siteId": 64085,
-    "meUserId": 540804,
-    "neighborUserId": 1212490
-  },
   "rates": [
     {
       "from": "2024-01",
