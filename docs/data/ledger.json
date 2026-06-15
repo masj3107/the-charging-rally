@@ -1,7 +1,7 @@
 {
   "meta": {
     "schemaVersion": "1.0",
-    "updatedAtUtc": "2026-06-14T11:02:48.876Z",
+    "updatedAtUtc": "2026-06-15T06:49:11.108Z",
     "lastRunStatus": "OK",
     "lastError": null
   },
@@ -140,8 +140,8 @@
       "isLocked": false,
       "inputs": {
         "spotOreInclVat": 29.98,
-        "meKWh": null,
-        "neighborKWh": null
+        "meKWh": 46.802161000000005,
+        "neighborKWh": 220.57804
       },
       "appliedRates": {
         "localDiscountOreInclVat": 3.75,
@@ -152,21 +152,18 @@
       "result": {
         "me": {
           "adjustedElPriceOre": 26.23,
-          "elhandelKr": 0,
-          "elnatKr": 0,
-          "totalKr": 0
+          "elhandelKr": 12.28,
+          "elnatKr": 23.58,
+          "totalKr": 35.86
         },
         "neighbor": {
           "adjustedElPriceOre": 26.23,
-          "elhandelKr": 0,
-          "elnatKr": 0,
-          "totalKr": 0
+          "elhandelKr": 57.86,
+          "elnatKr": 111.13,
+          "totalKr": 168.99
         }
       },
-      "warnings": [
-        "MissingEaseeUsageMe",
-        "MissingEaseeUsageNeighbor"
-      ]
+      "warnings": []
     },
     {
       "year": 2025,
@@ -174,8 +171,8 @@
       "isLocked": false,
       "inputs": {
         "spotOreInclVat": 31.24,
-        "meKWh": null,
-        "neighborKWh": null
+        "meKWh": 131.80841,
+        "neighborKWh": 290.177632
       },
       "appliedRates": {
         "localDiscountOreInclVat": 3.75,
@@ -186,21 +183,18 @@
       "result": {
         "me": {
           "adjustedElPriceOre": 27.49,
-          "elhandelKr": 0,
-          "elnatKr": 0,
-          "totalKr": 0
+          "elhandelKr": 36.23,
+          "elnatKr": 66.41,
+          "totalKr": 102.64
         },
         "neighbor": {
           "adjustedElPriceOre": 27.49,
-          "elhandelKr": 0,
-          "elnatKr": 0,
-          "totalKr": 0
+          "elhandelKr": 79.77,
+          "elnatKr": 146.19,
+          "totalKr": 225.96
         }
       },
-      "warnings": [
-        "MissingEaseeUsageMe",
-        "MissingEaseeUsageNeighbor"
-      ]
+      "warnings": []
     },
     {
       "year": 2025,
@@ -208,8 +202,8 @@
       "isLocked": false,
       "inputs": {
         "spotOreInclVat": 19.17,
-        "meKWh": null,
-        "neighborKWh": null
+        "meKWh": 101.27413999999999,
+        "neighborKWh": 225.38423799999998
       },
       "appliedRates": {
         "localDiscountOreInclVat": 3.75,
@@ -219,22 +213,19 @@
       },
       "result": {
         "me": {
-          "adjustedElPriceOre": 15.420000000000002,
-          "elhandelKr": 0,
-          "elnatKr": 0,
-          "totalKr": 0
+          "adjustedElPriceOre": 15.42,
+          "elhandelKr": 15.62,
+          "elnatKr": 51.02,
+          "totalKr": 66.64
         },
         "neighbor": {
-          "adjustedElPriceOre": 15.420000000000002,
-          "elhandelKr": 0,
-          "elnatKr": 0,
-          "totalKr": 0
+          "adjustedElPriceOre": 15.42,
+          "elhandelKr": 34.75,
+          "elnatKr": 113.55,
+          "totalKr": 148.3
         }
       },
-      "warnings": [
-        "MissingEaseeUsageMe",
-        "MissingEaseeUsageNeighbor"
-      ]
+      "warnings": []
     },
     {
       "year": 2025,
