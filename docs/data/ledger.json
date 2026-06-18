@@ -1,9 +1,9 @@
 {
   "meta": {
     "schemaVersion": "1.0",
-    "updatedAtUtc": "2026-06-17T11:39:00.643Z",
-    "lastRunStatus": "FAIL",
-    "lastError": "Jamtkraft request failed with 500"
+    "updatedAtUtc": "2026-06-18T11:27:35.108Z",
+    "lastRunStatus": "OK",
+    "lastError": null
   },
   "rates": [
     {
