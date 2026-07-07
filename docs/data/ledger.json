@@ -1,7 +1,7 @@
 {
   "meta": {
     "schemaVersion": "1.0",
-    "updatedAtUtc": "2026-07-06T13:47:36.417Z",
+    "updatedAtUtc": "2026-07-07T12:28:24.950Z",
     "lastRunStatus": "OK",
     "lastError": null
   },
@@ -568,7 +568,7 @@
       "month": 6,
       "isLocked": false,
       "inputs": {
-        "spotOreInclVat": 0,
+        "spotOreInclVat": 67.81,
         "meKWh": 147.70343300000002,
         "neighborKWh": 193.500972
       },
@@ -580,16 +580,16 @@
       },
       "result": {
         "me": {
-          "adjustedElPriceOre": -3.75,
-          "elhandelKr": -5.54,
+          "adjustedElPriceOre": 64.06,
+          "elhandelKr": 94.62,
           "elnatKr": 74.41,
-          "totalKr": 68.87
+          "totalKr": 169.03
         },
         "neighbor": {
-          "adjustedElPriceOre": -3.75,
-          "elhandelKr": -7.26,
+          "adjustedElPriceOre": 64.06,
+          "elhandelKr": 123.96,
           "elnatKr": 97.49,
-          "totalKr": 90.23
+          "totalKr": 221.45
         }
       },
       "warnings": []
