@@ -1,7 +1,7 @@
 {
   "meta": {
     "schemaVersion": "1.0",
-    "updatedAtUtc": "2026-09-03T11:05:04.585Z",
+    "updatedAtUtc": "2026-09-03T14:13:10.792Z",
     "lastRunStatus": "OK",
     "lastError": null
   },
@@ -632,7 +632,7 @@
       "month": 8,
       "isLocked": false,
       "inputs": {
-        "spotOreInclVat": null,
+        "spotOreInclVat": 70.79,
         "meKWh": 126.768248,
         "neighborKWh": 162.176672
       },
@@ -644,21 +644,19 @@
       },
       "result": {
         "me": {
-          "adjustedElPriceOre": null,
-          "elhandelKr": 0,
-          "elnatKr": 0,
-          "totalKr": 0
+          "adjustedElPriceOre": 67.04,
+          "elhandelKr": 84.99,
+          "elnatKr": 63.87,
+          "totalKr": 148.86
         },
         "neighbor": {
-          "adjustedElPriceOre": null,
-          "elhandelKr": 0,
-          "elnatKr": 0,
-          "totalKr": 0
+          "adjustedElPriceOre": 67.04,
+          "elhandelKr": 108.72,
+          "elnatKr": 81.7,
+          "totalKr": 190.42
         }
       },
-      "warnings": [
-        "MissingJamtkraftPrice"
-      ]
+      "warnings": []
     }
   ]
 }
