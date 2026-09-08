@@ -1,7 +1,7 @@
 {
   "meta": {
     "schemaVersion": "1.0",
-    "updatedAtUtc": "2026-09-08T13:11:47.592Z",
+    "updatedAtUtc": "2026-09-08T14:13:36.201Z",
     "lastRunStatus": "OK",
     "lastError": null
   },
@@ -11,13 +11,6 @@
       "localDiscountOreInclVat": 3.75,
       "gridTransferOreInclVat": 7.5,
       "energyTaxOreInclVat": 54.88,
-      "norrlandDeductionOreInclVat": -12
-    },
-    {
-      "from": "2026-01",
-      "localDiscountOreInclVat": 3.75,
-      "gridTransferOreInclVat": 7.5,
-      "energyTaxOreInclVat": 45,
       "norrlandDeductionOreInclVat": -12
     }
   ],
@@ -427,21 +420,21 @@
       "appliedRates": {
         "localDiscountOreInclVat": 3.75,
         "gridTransferOreInclVat": 7.5,
-        "energyTaxOreInclVat": 45,
+        "energyTaxOreInclVat": 54.88,
         "norrlandDeductionOreInclVat": -12
       },
       "result": {
         "me": {
           "adjustedElPriceOre": 128.53,
           "elhandelKr": 470.18,
-          "elnatKr": 148.15,
-          "totalKr": 618.33
+          "elnatKr": 184.3,
+          "totalKr": 654.48
         },
         "neighbor": {
           "adjustedElPriceOre": 128.53,
           "elhandelKr": 627.11,
-          "elnatKr": 197.6,
-          "totalKr": 824.71
+          "elnatKr": 245.81,
+          "totalKr": 872.92
         }
       },
       "warnings": []
@@ -458,21 +451,21 @@
       "appliedRates": {
         "localDiscountOreInclVat": 3.75,
         "gridTransferOreInclVat": 7.5,
-        "energyTaxOreInclVat": 45,
+        "energyTaxOreInclVat": 54.88,
         "norrlandDeductionOreInclVat": -12
       },
       "result": {
         "me": {
           "adjustedElPriceOre": 135.9,
           "elhandelKr": 529.09,
-          "elnatKr": 157.68,
-          "totalKr": 686.77
+          "elnatKr": 196.14,
+          "totalKr": 725.23
         },
         "neighbor": {
           "adjustedElPriceOre": 135.9,
           "elhandelKr": 585.84,
-          "elnatKr": 174.59,
-          "totalKr": 760.43
+          "elnatKr": 217.18,
+          "totalKr": 803.02
         }
       },
       "warnings": []
@@ -489,21 +482,21 @@
       "appliedRates": {
         "localDiscountOreInclVat": 3.75,
         "gridTransferOreInclVat": 7.5,
-        "energyTaxOreInclVat": 45,
+        "energyTaxOreInclVat": 54.88,
         "norrlandDeductionOreInclVat": -12
       },
       "result": {
         "me": {
           "adjustedElPriceOre": 35.51,
           "elhandelKr": 97.27,
-          "elnatKr": 110.94,
-          "totalKr": 208.21
+          "elnatKr": 138,
+          "totalKr": 235.27
         },
         "neighbor": {
           "adjustedElPriceOre": 35.51,
           "elhandelKr": 95.17,
-          "elnatKr": 108.55,
-          "totalKr": 203.72
+          "elnatKr": 135.03,
+          "totalKr": 230.2
         }
       },
       "warnings": []
@@ -520,21 +513,21 @@
       "appliedRates": {
         "localDiscountOreInclVat": 3.75,
         "gridTransferOreInclVat": 7.5,
-        "energyTaxOreInclVat": 45,
+        "energyTaxOreInclVat": 54.88,
         "norrlandDeductionOreInclVat": -12
       },
       "result": {
         "me": {
           "adjustedElPriceOre": 40.5,
           "elhandelKr": 86.48,
-          "elnatKr": 86.48,
-          "totalKr": 172.96
+          "elnatKr": 107.58,
+          "totalKr": 194.06
         },
         "neighbor": {
           "adjustedElPriceOre": 40.5,
           "elhandelKr": 77.13,
-          "elnatKr": 77.13,
-          "totalKr": 154.26
+          "elnatKr": 95.95,
+          "totalKr": 173.08
         }
       },
       "warnings": []
@@ -551,21 +544,21 @@
       "appliedRates": {
         "localDiscountOreInclVat": 3.75,
         "gridTransferOreInclVat": 7.5,
-        "energyTaxOreInclVat": 45,
+        "energyTaxOreInclVat": 54.88,
         "norrlandDeductionOreInclVat": -12
       },
       "result": {
         "me": {
           "adjustedElPriceOre": 77.45,
           "elhandelKr": 108.87,
-          "elnatKr": 56.93,
-          "totalKr": 165.8
+          "elnatKr": 70.82,
+          "totalKr": 179.69
         },
         "neighbor": {
           "adjustedElPriceOre": 77.45,
           "elhandelKr": 185.41,
-          "elnatKr": 96.95,
-          "totalKr": 282.36
+          "elnatKr": 120.61,
+          "totalKr": 306.02
         }
       },
       "warnings": []
@@ -582,21 +575,21 @@
       "appliedRates": {
         "localDiscountOreInclVat": 3.75,
         "gridTransferOreInclVat": 7.5,
-        "energyTaxOreInclVat": 45,
+        "energyTaxOreInclVat": 54.88,
         "norrlandDeductionOreInclVat": -12
       },
       "result": {
         "me": {
           "adjustedElPriceOre": 64.06,
           "elhandelKr": 94.62,
-          "elnatKr": 59.82,
-          "totalKr": 154.44
+          "elnatKr": 74.41,
+          "totalKr": 169.03
         },
         "neighbor": {
           "adjustedElPriceOre": 64.06,
           "elhandelKr": 123.96,
-          "elnatKr": 78.37,
-          "totalKr": 202.33
+          "elnatKr": 97.49,
+          "totalKr": 221.45
         }
       },
       "warnings": []
@@ -604,16 +597,16 @@
     {
       "year": 2026,
       "month": 7,
-      "isLocked": true,
+      "isLocked": false,
       "inputs": {
         "spotOreInclVat": 33.96,
-        "meKWh": 0,
+        "meKWh": null,
         "neighborKWh": 93.60060899999999
       },
       "appliedRates": {
         "localDiscountOreInclVat": 3.75,
         "gridTransferOreInclVat": 7.5,
-        "energyTaxOreInclVat": 45,
+        "energyTaxOreInclVat": 54.88,
         "norrlandDeductionOreInclVat": -12
       },
       "result": {
@@ -626,11 +619,13 @@
         "neighbor": {
           "adjustedElPriceOre": 30.21,
           "elhandelKr": 28.28,
-          "elnatKr": 37.91,
-          "totalKr": 66.19
+          "elnatKr": 47.16,
+          "totalKr": 75.44
         }
       },
-      "warnings": []
+      "warnings": [
+        "MissingEaseeUsageMe"
+      ]
     },
     {
       "year": 2026,
@@ -644,21 +639,21 @@
       "appliedRates": {
         "localDiscountOreInclVat": 3.75,
         "gridTransferOreInclVat": 7.5,
-        "energyTaxOreInclVat": 45,
+        "energyTaxOreInclVat": 54.88,
         "norrlandDeductionOreInclVat": -12
       },
       "result": {
         "me": {
           "adjustedElPriceOre": 67.04,
           "elhandelKr": 84.99,
-          "elnatKr": 51.34,
-          "totalKr": 136.33
+          "elnatKr": 63.87,
+          "totalKr": 148.86
         },
         "neighbor": {
           "adjustedElPriceOre": 67.04,
           "elhandelKr": 108.72,
-          "elnatKr": 65.68,
-          "totalKr": 174.4
+          "elnatKr": 81.7,
+          "totalKr": 190.42
         }
       },
       "warnings": []
