@@ -1,7 +1,7 @@
 {
   "meta": {
     "schemaVersion": "1.0",
-    "updatedAtUtc": "2026-09-30T16:17:57.501Z",
+    "updatedAtUtc": "2026-10-01T16:55:21.786Z",
     "lastRunStatus": "OK",
     "lastError": null
   },
@@ -659,6 +659,37 @@
           "elhandelKr": 108.72,
           "elnatKr": 65.68,
           "totalKr": 174.4
+        }
+      },
+      "warnings": []
+    },
+    {
+      "year": 2026,
+      "month": 9,
+      "isLocked": false,
+      "inputs": {
+        "spotOreInclVat": 0,
+        "meKWh": 119.170999,
+        "neighborKWh": 206.950852
+      },
+      "appliedRates": {
+        "localDiscountOreInclVat": 3.75,
+        "gridTransferOreInclVat": 7.5,
+        "energyTaxOreInclVat": 45,
+        "norrlandDeductionOreInclVat": -12
+      },
+      "result": {
+        "me": {
+          "adjustedElPriceOre": -3.75,
+          "elhandelKr": -4.47,
+          "elnatKr": 48.26,
+          "totalKr": 43.79
+        },
+        "neighbor": {
+          "adjustedElPriceOre": -3.75,
+          "elhandelKr": -7.76,
+          "elnatKr": 83.82,
+          "totalKr": 76.06
         }
       },
       "warnings": []
